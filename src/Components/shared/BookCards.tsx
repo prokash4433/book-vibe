@@ -1,5 +1,6 @@
 import { IBook } from '@/types/books.types';
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 
 interface IBookCardProps {
@@ -9,14 +10,12 @@ interface IBookCardProps {
 
 const BookCards = ({book}:IBookCardProps) => {
           return (
-                    <div
-                                 
-                    className="group overflow-hidden rounded-2xl bg-base-100 shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
+                <div className="group overflow-hidden rounded-2xl bg-base-100 shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
                               >
-                                {/* Book Image */}
-                                <div className="relative h-72 overflow-hidden bg-base-200">
-                                  <Image
-                                    src={book.image}
+                               {/* Book Image */}
+              <div className="relative h-72 overflow-hidden bg-base-200">
+                 <Image
+                                  src={book.image}
                                     alt={book.bookName}
                                     width={800}
                                     height={600}
@@ -100,9 +99,11 @@ const BookCards = ({book}:IBookCardProps) => {
                                   </div>
                     
                                   {/* Button */}
-                                  <button className="btn btn-success mt-5 w-full rounded-xl text-white">
-                                    View Details
-                                  </button>
+                    <Link href={`/books/${book.bookId}`}>
+                  <button className="btn btn-success mt-5 w-full rounded-xl text-white">
+                    View Details
+                  </button>
+                    </Link>
                                 </div>
                               </div>
           );
